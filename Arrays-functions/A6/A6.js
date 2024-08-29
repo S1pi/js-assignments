@@ -7,10 +7,17 @@ const movieAmount = parseInt(prompt('How many movies you want to rate?'));
 for (let i = 1; i <= movieAmount; i++) {
   const movieName = prompt(`Name of the ${i} movie`);
   const movieRating = parseInt(prompt(`rating of the ${i} movie`));
+  const title = movieName;
+  const rating = movieRating;
   movies.push({
-    title: `${movieName}`,
-    rating: `${movieRating}`,
+    title,
+    rating,
   });
+
+  // movies.push({
+  //   title: `${movieName}`,
+  //   rating: `${movieRating}`,
+  // });
 }
 
 movies.sort((a, b) => b.rating - a.rating);
