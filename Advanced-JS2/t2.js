@@ -25,12 +25,23 @@ const haeRavintolat = async () => {
 const teeRavintolaLista = async (restaurants) => {
   console.log(restaurants);
   kohde.innerHTML = '';
-  sodexoBTN.addEventListener('click', () => {
-    const filteredRestaurants = restaurants.filter(
-      (restaurant) => restaurant.company === 'Sodexo'
-    );
-    teeRavintolaLista(filteredRestaurants);
-  });
+  // sodexoBTN.addEventListener('click', () => {
+  //   const filteredRestaurants = restaurants.filter(
+  //     (restaurant) => restaurant.company === 'Sodexo'
+  //   );
+  //   teeRavintolaLista(filteredRestaurants);
+  // });
+
+  // compassBTN.addEventListener('click', () => {
+  //   const filteredRestaurants = restaurants.filter(
+  //     (restaurant) => restaurant.company === 'Compass Group'
+  //   );
+  //   teeRavintolaLista(filteredRestaurants);
+  // });
+
+  // resetBTN.addEventListener('click', () => {
+  //   teeRavintolaLista(restaurants);
+  // });
 
   console.log(restaurants);
   restaurants.sort((a, b) => a.name.localeCompare(b.name));
@@ -79,6 +90,24 @@ const teeRavintolaLista = async (restaurants) => {
 try {
   raflat = await haeRavintolat();
   teeRavintolaLista(raflat);
+
+  sodexoBTN.addEventListener('click', () => {
+    const filteredRestaurants = raflat.filter(
+      (restaurant) => restaurant.company === 'Sodexo'
+    );
+    teeRavintolaLista(filteredRestaurants);
+  });
+
+  compassBTN.addEventListener('click', () => {
+    const filteredRestaurants = raflat.filter(
+      (restaurant) => restaurant.company === 'Compass Group'
+    );
+    teeRavintolaLista(filteredRestaurants);
+  });
+
+  resetBTN.addEventListener('click', () => {
+    teeRavintolaLista(raflat);
+  });
 } catch (error) {
   console.error('Error fetching restaurants:', error);
 }
